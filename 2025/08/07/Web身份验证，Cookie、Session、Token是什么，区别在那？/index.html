@@ -14,18 +14,25 @@
   
 
   
-  <title>霜月舞篝的博客</title>
+  <title>Web身份验证，Cookie、Session、Token是什么，区别在那？ | 霜月舞篝的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="霜月舞篝的博客">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="1.它们的由来当你进入一个网页，进行登录注册，很长一段时间都不用输入用户名和密码，你有考虑过是怎么实现的吗。如果你了解 HTTP 就知道，你再次访问服务器时,服务器会将每个传入的请求都视为一个独立的事务，服务器其实是不知道是又是你来访问的，因为 HTTP 协议本质上是无状态的 。对之前的交互没有任何记忆。 所以为了解决这个根本问题，业界发展出了三种核心机制，为无状态的 Web 赋予“记忆”：Coo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web身份验证，Cookie、Session、Token是什么，区别在那？">
+<meta property="og:url" content="http://example.com/2025/08/07/Web%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%EF%BC%8CCookie%E3%80%81Session%E3%80%81Token%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%8C%BA%E5%88%AB%E5%9C%A8%E9%82%A3%EF%BC%9F/index.html">
 <meta property="og:site_name" content="霜月舞篝的博客">
+<meta property="og:description" content="1.它们的由来当你进入一个网页，进行登录注册，很长一段时间都不用输入用户名和密码，你有考虑过是怎么实现的吗。如果你了解 HTTP 就知道，你再次访问服务器时,服务器会将每个传入的请求都视为一个独立的事务，服务器其实是不知道是又是你来访问的，因为 HTTP 协议本质上是无状态的 。对之前的交互没有任何记忆。 所以为了解决这个根本问题，业界发展出了三种核心机制，为无状态的 Web 赋予“记忆”：Coo">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-07T12:49:09.000Z">
+<meta property="article:modified_time" content="2025-08-07T12:53:27.698Z">
 <meta property="article:author" content="霜月舞篝">
+<meta property="article:tag" content="Cookie">
+<meta property="article:tag" content="Session">
+<meta property="article:tag" content="Token">
 <meta name="twitter:card" content="summary">
   
   
@@ -48,14 +55,14 @@
   
   
     
-<div id="banner" class=" is_home ">
+<div id="banner" class="">
   <img src="/img/title.png" itemprop="image">
   <div id="banner-dim"></div>
 </div>
  
    
   <div id="main-grid" class="  ">
-    <div id="nav" class=" is_home "  >
+    <div id="nav" class=""  >
       <navbar id="navbar">
   <nav id="title-nav">
     <a href="/">
@@ -193,11 +200,12 @@
 </sidebar>
     </div>
     <div id="content-body">
-      
-   
+       
 
 
 <article id="post-Web身份验证，Cookie、Session、Token是什么，区别在那？" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
    
   <div class="article-inner">
     <div class="article-main">
@@ -207,8 +215,8 @@
   <div class="main-title-dot"></div>
   
     
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/08/07/Web%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%EF%BC%8CCookie%E3%80%81Session%E3%80%81Token%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%8C%BA%E5%88%AB%E5%9C%A8%E9%82%A3%EF%BC%9F/">Web身份验证，Cookie、Session、Token是什么，区别在那？</a>
+      <h1 class="p-name article-title" itemprop="headline name">
+        Web身份验证，Cookie、Session、Token是什么，区别在那？
       </h1>
     
   
@@ -236,14 +244,71 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <div class="truncate-text">
-            
-              1.它们的由来当你进入一个网页，进行登录注册，很长一段时间都不用输入用户名和密码，你有考虑过是怎么实现的吗。如果你了解 HTTP 就知道，你再次访问服务器时,服务器会将每个传入的请求都视为一个独立的事务，服务器其实是不知道是又是你来访问的，因为 HTTP 协议本质上是无状态的 。对之前的交互没有任何记忆。
-所以为了解决这个根本问题，业界发展出了三种核心机制，为无状态的 Web 赋予“记忆”：Cookie、Session 和 Token。
-2.Web 会话管理的基础 CookieCookie 是服务器发送到用户浏览器并保存在本地的一小块数据 。它就像一张“身份证”，浏览器在后续每次向同一服务器发送请求时都会带上它，从而让服务器能够识别出是同一个用户 。
-当用户首次访问一个网站时，服务器可以在 HTTP 响应中通过 Set-Cookie 头向浏览器发送一小块数据。浏览器接收并存储这个 Cookie。在之后对该服务器的每次请求中，浏览器都会自动通过 Cookie 头将这个 Cookie 回传给服务器 。这个简单的往返机制使得服务器能够识别用户并维持状态，主要用于会话管理、个性化设置和用...
-            
-          </div>
+          <h2 id="1-它们的由来"><a href="#1-它们的由来" class="headerlink" title="1.它们的由来"></a>1.它们的由来</h2><p>当你进入一个网页，进行登录注册，很长一段时间都不用输入用户名和密码，你有考虑过是怎么实现的吗。如果你了解 HTTP 就知道，你再次访问服务器时,服务器会将每个传入的请求都视为一个独立的事务，服务器其实是不知道是又是你来访问的，因为 HTTP 协议本质上是无状态的 。对之前的交互没有任何记忆。</p>
+<p>所以为了解决这个根本问题，业界发展出了三种核心机制，为无状态的 Web 赋予“记忆”：Cookie、Session 和 Token。</p>
+<h2 id="2-Web-会话管理的基础-Cookie"><a href="#2-Web-会话管理的基础-Cookie" class="headerlink" title="2.Web 会话管理的基础 Cookie"></a>2.Web 会话管理的基础 Cookie</h2><p>Cookie 是服务器发送到用户浏览器并保存在本地的一小块数据 。它就像一张“身份证”，浏览器在后续每次向同一服务器发送请求时都会带上它，从而让服务器能够识别出是同一个用户 。</p>
+<p>当用户首次访问一个网站时，服务器可以在 HTTP 响应中通过 <code>Set-Cookie</code> 头向浏览器发送一小块数据。浏览器接收并存储这个 Cookie。在之后对该服务器的每次请求中，浏览器都会自动通过 <code>Cookie</code> 头将这个 Cookie 回传给服务器 。这个简单的往返机制使得服务器能够识别用户并维持状态，主要用于会话管理、个性化设置和用户行为跟踪 。</p>
+<h2 id="3-一种有状态的身份验证模型-Session"><a href="#3-一种有状态的身份验证模型-Session" class="headerlink" title="3.一种有状态的身份验证模型 Session"></a>3.一种有状态的身份验证模型 Session</h2><p>Session 是一种在服务器端存储用户信息的机制 。当用户登录后，服务器会创建一个唯一的“会话 ID”（Session ID），并将这个 ID 通过 Cookie 发送给浏览器。之后，浏览器只需发送这个 ID，服务器就能通过它找到完整的用户会话信息 。Session 就像是服务器为每个用户开设的一个临时档案柜，而 Session ID 就是档案柜的钥匙。</p>
+<h2 id="4-一种无状态的认证模型-Token"><a href="#4-一种无状态的认证模型-Token" class="headerlink" title="4.一种无状态的认证模型 Token"></a>4.一种无状态的认证模型 Token</h2><p>是一种无状态的身份验证方案。用户登录后，服务器会生成一个经过加密签名的“令牌”（Token），其中包含了验证所需的所有信息（如用户 ID、权限、过期时间） 。这个令牌被发送给客户端存储，并在后续请求中提交给服务器。服务器只需验证令牌的签名是否有效，即可信任其中的信息，无需在自己的数据库中查找任何内容 。</p>
+<h2 id="5-相同点"><a href="#5-相同点" class="headerlink" title="5.相同点"></a>5.相同点</h2><ul>
+<li><strong>根本目的</strong>：三者都是为了在无状态的 HTTP 协议上管理用户状态和身份，以实现连续的交互体验 。</li>
+<li><strong>初始流程</strong>：它们的认证流程通常都始于用户提交凭据（如用户名和密码）进行验证 。</li>
+<li><strong>客户端存储</strong>：都需要在客户端（浏览器）存储一些标识信息。无论是直接存储数据的 Cookie，存储 Session ID 的 Cookie，还是存储 Token，客户端都扮演着信息载体的角色 。</li>
+<li><strong>传输安全依赖</strong>：为了防止在传输过程中被窃听或篡改，三者都严重依赖于 HTTPS 加密通信。如果不使用 HTTPS，任何一种机制的安全性都会大打折扣 。</li>
+</ul>
+<h2 id="6-不同点"><a href="#6-不同点" class="headerlink" title="6.不同点"></a>6.不同点</h2><table>
+<thead>
+<tr>
+<th><br/></th>
+<th>Cookie</th>
+<th>Session</th>
+<th>Token</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>状态管理</td>
+<td>客户端存储，可用于有状态或无状态场景</td>
+<td><strong>有状态</strong>：状态存储在服务器端</td>
+<td><strong>无状态</strong>：状态自包含于 Token 中，由客户端存储</td>
+</tr>
+<tr>
+<td>数据存储位置</td>
+<td>客户端（浏览器）</td>
+<td>服务器端（数据库、内存等）</td>
+<td>客户端（内存、localStorage、Cookie 等）</td>
+</tr>
+<tr>
+<td>可伸缩性</td>
+<td>——</td>
+<td><strong>差</strong>：难以在分布式系统中扩展</td>
+<td><strong>优秀</strong>：天然适用于微服务和分布式系统</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>——</td>
+<td><strong>较低</strong>：每次请求都需要服务器端数据库查询，增加延迟</td>
+<td><strong>较高</strong>：验证在内存中完成，速度快，但 Token 本身可能较大</td>
+</tr>
+<tr>
+<td>安全性（撤销）</td>
+<td>——</td>
+<td><strong>简单</strong>：在服务器端删除会话记录即可立即撤销</td>
+<td><strong>困难</strong>：在过期前难以撤销，需引入状态（如黑名单）</td>
+</tr>
+<tr>
+<td>安全性（攻击面）</td>
+<td>易受 CSRF 和 XSS 攻击，需通过<code>SameSite</code> 和 <code>HttpOnly</code> 等属性防御</td>
+<td>依赖的 Cookie 易受 CSRF 攻击；也存在会话劫持和会话固定风险</td>
+<td>若存储在<code>localStorage</code>，易受 XSS 攻击；若通过 <code>Authorization</code> 头发送，则对 CSRF 免疫</td>
+</tr>
+<tr>
+<td>跨域（CORS）</td>
+<td>受同源策略限制，处理 CORS 较复杂</td>
+<td>与 Cookie 相同</td>
+<td><strong>简单</strong>：通过 HTTP 头传输，不受同源策略限制，与 CORS 协作良好</td>
+</tr>
+</tbody></table>
+
         
       </div>
 
@@ -251,94 +316,35 @@
     </div>
     
      
-    <a class="right-panel  non-pic  "
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/08/01/hello%20word/"
+      title="hello word"
+     >
+
+    <p class="title-text">
       
-      href="/2025/08/07/Web%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%EF%BC%8CCookie%E3%80%81Session%E3%80%81Token%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%8C%BA%E5%88%AB%E5%9C%A8%E9%82%A3%EF%BC%9F/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
+        hello word
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
   
 </article>
-
-
-
-
-
-
-
-   
-
-
-<article id="post-hello word" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/08/01/hello%20word/">hello word</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-08-01T14:02:10.000Z" itemprop="datePublished">2025-08-01</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E6%9D%82%E8%B0%88/">杂谈</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            188 词 
-          </div>
-        </div>
-        
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              这是我博客的第一页
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  with-pic  "
-       style="background-image: url(/./images/kagari.jpg)" 
-      href="/2025/08/01/hello%20word/" 
-    >
-       
-      <div class="overlay">
-        <i class="fa-solid fa-angle-right with-pic"></i>
-      </div>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
 
 
 
