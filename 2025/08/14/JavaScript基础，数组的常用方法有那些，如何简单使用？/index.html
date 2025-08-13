@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>JavaScript基础，数组的常用方法有那些，如何简单使用？ | 霜月舞篝的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="数组是 JavaScript 中用于存储有序集合的特殊对象 。它能够包含不同数据类型的值，并且是可调整大小的 。  末尾增增加删除操作  **push()**在数组末尾添加一个或多个元素，并返回新数组的长度 。 &lt;strong&gt;pop()&lt;&#x2F;strong&gt;在数组末尾删除 并返回数组的最后一个元素 。 这两个方法都会修改原素组。 12345const fruits &#x3D; [&amp;q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript基础，数组的常用方法有那些，如何简单使用？">
+<meta property="og:url" content="http://example.com/2025/08/14/JavaScript%E5%9F%BA%E7%A1%80%EF%BC%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%9C%89%E9%82%A3%E4%BA%9B%EF%BC%8C%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%EF%BC%9F/index.html">
+<meta property="og:site_name" content="霜月舞篝的博客">
+<meta property="og:description" content="数组是 JavaScript 中用于存储有序集合的特殊对象 。它能够包含不同数据类型的值，并且是可调整大小的 。  末尾增增加删除操作  **push()**在数组末尾添加一个或多个元素，并返回新数组的长度 。 &lt;strong&gt;pop()&lt;&#x2F;strong&gt;在数组末尾删除 并返回数组的最后一个元素 。 这两个方法都会修改原素组。 12345const fruits &#x3D; [&amp;q">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-08-13T16:25:49.000Z">
+<meta property="article:modified_time" content="2025-08-13T16:30:01.047Z">
+<meta property="article:author" content="霜月舞篝">
+<meta property="article:tag" content="javaScript">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/img/title.png" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>kagari的小站</div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">主页</a>
+    
+      <a class="main-nav-link" href="/about">关于</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">主页</a>
+    
+      <a class="nav-dropdown-link" href="/about">关于</a>
+    
+
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/img/head.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">霜月kagari </div>
+      <div class="dot"></div>
+      <div class="subtitle">今天人类也在绝赞衰退中 </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/key-Naka" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://space.bilibili.com/225137633" title="bilibili"><i class="fa-brands fa-bilibili"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://steamcommunity.com/profiles/1237582040" title="Steam"><i class="fa-brands fa-steam"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">最近文章</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2025/08/14/JavaScript%E5%9F%BA%E7%A1%80%EF%BC%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%E6%9C%89%E9%82%A3%E4%BA%9B%EF%BC%8C%E5%A6%82%E4%BD%95%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8%EF%BC%9F/" title="JavaScript基础，数组的常用方法有那些，如何简单使用？" >
+            <div class="recent-link-text">
+              JavaScript基础，数组的常用方法有那些，如何简单使用？
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/08/07/Web%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%EF%BC%8CCookie%E3%80%81Session%E3%80%81Token%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%8C%BA%E5%88%AB%E5%9C%A8%E9%82%A3%EF%BC%9F/" title="Web身份验证，Cookie、Session、Token是什么，区别在那？" >
+            <div class="recent-link-text">
+              Web身份验证，Cookie、Session、Token是什么，区别在那？
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/08/01/hello%20word/" title="hello word" >
+            <div class="recent-link-text">
+              hello word
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">标签</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Cookie/" rel="tag">Cookie</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Session/" rel="tag">Session</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Token/" rel="tag">Token</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">分类</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E6%9D%82%E8%B0%88/">
+                杂谈
+                <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/">
+                技术类
+                <div class="category-count">2</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-JavaScript基础，数组的常用方法有那些，如何简单使用？" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        JavaScript基础，数组的常用方法有那些，如何简单使用？
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-08-13T16:25:49.000Z" itemprop="datePublished">2025-08-14</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/">技术类</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            5.1k 词 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaScript/" rel="tag">javaScript</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <p>数组是 JavaScript 中用于存储有序集合的特殊对象 。它能够包含不同数据类型的值，并且是可调整大小的 。</p>
+<ul>
+<li><h2 id="末尾增增加删除操作"><a href="#末尾增增加删除操作" class="headerlink" title="末尾增增加删除操作"></a>末尾增增加删除操作</h2></li>
+</ul>
+<p>**<code>push()</code>**在数组末尾添加一个或多个元素，并返回新数组的长度 。</p>
+<p><code>&lt;strong&gt;pop()&lt;/strong&gt;在数组末尾删除</code> 并返回数组的最后一个元素 。</p>
+<p>这两个方法都会修改原素组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>];</span><br><span class="line">fruits.<span class="title function_">push</span>(<span class="string">&quot;orange&quot;</span>);     <span class="comment">// 返回 3 </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits);       <span class="comment">// [&quot;apple&quot;, &quot;banana&quot;, &quot;orange&quot;]</span></span><br><span class="line"><span class="keyword">const</span> lastFruit = fruits.<span class="title function_">pop</span>(); <span class="comment">// 返回 &quot;orange&quot; </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits);       <span class="comment">// [&quot;apple&quot;, &quot;banana&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="数组开头的增加删除操作"><a href="#数组开头的增加删除操作" class="headerlink" title="数组开头的增加删除操作"></a>数组开头的增加删除操作</h2></li>
+</ul>
+<p>**<code>unshift()</code>**在数组开头添加一个或多个元素，并返回新数组的长度 。</p>
+<p>**<code>shift()</code>**在数组开头删除并返回数组的第一个元素 。</p>
+<p>这两个方法都会修改原数组 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> colors = [<span class="string">&quot;blue&quot;</span>, <span class="string">&quot;green&quot;</span>];</span><br><span class="line">colors.<span class="title function_">unshift</span>(<span class="string">&quot;red&quot;</span>);     <span class="comment">// 返回 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(colors);       <span class="comment">// [&quot;red&quot;, &quot;blue&quot;, &quot;green&quot;]</span></span><br><span class="line"><span class="keyword">const</span> firstColor = colors.<span class="title function_">shift</span>(); <span class="comment">// 返回 &quot;red&quot; </span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(colors);       <span class="comment">// [&quot;blue&quot;, &quot;green&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="在任意位置删除、插入数组操作"><a href="#在任意位置删除、插入数组操作" class="headerlink" title="在任意位置删除、插入数组操作"></a>在任意位置删除、插入数组操作</h2></li>
+</ul>
+<p>**splice()**方法通过删除、替换或添加元素来修改原始数组 。它返回一个包含被删除元素的新数组 。它常用于在任意位置插入、删除或替换元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> months = [<span class="string">&quot;Jan&quot;</span>, <span class="string">&quot;Feb&quot;</span>, <span class="string">&quot;Mar&quot;</span>, <span class="string">&quot;Apr&quot;</span>];</span><br><span class="line">months.<span class="title function_">splice</span>(<span class="number">1</span>, <span class="number">0</span>, <span class="string">&quot;Feb-new&quot;</span>); <span class="comment">// 在索引1处插入&quot;Feb-new&quot;，不删除</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(months);           <span class="comment">// [&quot;Jan&quot;, &quot;Feb-new&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;]</span></span><br><span class="line"></span><br><span class="line">months.<span class="title function_">splice</span>(<span class="number">2</span>, <span class="number">1</span>);           <span class="comment">// 从索引2开始删除1个元素 (&quot;Feb&quot;)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(months);           <span class="comment">// [&quot;Jan&quot;, &quot;Feb-new&quot;, &quot;Mar&quot;, &quot;Apr&quot;]</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="生成新数组的删除"><a href="#生成新数组的删除" class="headerlink" title="生成新数组的删除"></a>生成新数组的删除</h2></li>
+</ul>
+<p>**<code>slice()</code>**方法从现有数组中复制指定部分元素，创建一个新的数组对象，而不修改原始数组 。它返回一个包含提取元素的新数组 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> originalArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> newArray = originalArray.<span class="title function_">slice</span>(<span class="number">1</span>, <span class="number">4</span>); <span class="comment">// 从索引1到4（不含4）</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(newArray);       <span class="comment">// [2, 3, 4]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(originalArray);  <span class="comment">// [1, 2, 3, 4, 5] (原数组未变)</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="数组的合并操作"><a href="#数组的合并操作" class="headerlink" title="数组的合并操作"></a>数组的合并操作</h2></li>
+</ul>
+<p>**<code>concat()</code>**方法用于合并两个或多个数组，并返回一个新数组 。它不修改原始数组 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">const</span> arr3 = arr1.<span class="title function_">concat</span>(arr2, [<span class="number">5</span>, <span class="number">6</span>]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr3); <span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1); <span class="comment">// [1, 2] (原数组未变)</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="索引访问元素"><a href="#索引访问元素" class="headerlink" title="索引访问元素"></a>索引访问元素</h2></li>
+</ul>
+<p>**<code>at()</code>**方法接受一个整数值，返回该索引处的数组元素 。它支持正数和负数索引，负数索引从数组末尾开始计数 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">at</span>(<span class="number">0</span>));  <span class="comment">// 10 (第一个元素)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">at</span>(-<span class="number">1</span>)); <span class="comment">// 50 (最后一个元素)</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="查找元素位置"><a href="#查找元素位置" class="headerlink" title="查找元素位置"></a>查找元素位置</h2></li>
+</ul>
+<p>**<code>indexOf()</code>**返回在数组中可以找到给定元素的第一个索引 。</p>
+<p>**<code>lastIndexOf()</code>**则返回最后一个索引 。如果未找到，返回 <code>-1。</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">4</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(numbers.<span class="title function_">indexOf</span>(<span class="number">2</span>));      <span class="comment">// 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(numbers.<span class="title function_">lastIndexOf</span>(<span class="number">2</span>));   <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="检查元素是否存在"><a href="#检查元素是否存在" class="headerlink" title="检查元素是否存在"></a>检查元素是否存在</h2></li>
+</ul>
+<p>**includes()**方法判断数组是否包含某个值，返回 <code>true</code> 或 <code>false</code> 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits = [<span class="string">&quot;apple&quot;</span>, <span class="string">&quot;banana&quot;</span>, <span class="string">&quot;orange&quot;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits.<span class="title function_">includes</span>(<span class="string">&quot;banana&quot;</span>)); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits.<span class="title function_">includes</span>(<span class="string">&quot;grape&quot;</span>));  <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="遍历执行"><a href="#遍历执行" class="headerlink" title="遍历执行"></a>遍历执行</h2></li>
+</ul>
+<p>**<code> forEach(callbackFn, thisArg)</code>**方法对数组的每个元素执行一次提供的 <code>callbackFn</code> 函数 。它总是返回  <code>undefined</code>，且不能链式调用 。</p>
+<p>回调会接收 <code>element</code>、<code>index</code>、<code>array</code> 作为参数 。它不会为稀疏数组中的空槽调用回调函数 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> sum = <span class="number">0</span>;</span><br><span class="line">numbers.<span class="title function_">forEach</span>(<span class="function"><span class="params">num</span> =&gt;</span> &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(num * <span class="number">2</span>); <span class="comment">// 2, 4, 6</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sum); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="数组转换生成新数组"><a href="#数组转换生成新数组" class="headerlink" title="数组转换生成新数组"></a>数组转换生成新数组</h2></li>
+</ul>
+<p>**<code>map()</code>**方法为数组中的每个元素调用一次提供的回调函数，并用结果构建一个新数组 。它不修改原始数组 。新数组的长度与原始数组相同 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> officers = [&#123; <span class="attr">id</span>: <span class="number">20</span>, <span class="attr">name</span>: <span class="string">&#x27;Captain Piett&#x27;</span> &#125;, &#123; <span class="attr">id</span>: <span class="number">24</span>, <span class="attr">name</span>: <span class="string">&#x27;General Veers&#x27;</span> &#125;];</span><br><span class="line"><span class="keyword">const</span> officerIds = officers.<span class="title function_">map</span>(<span class="function"><span class="params">officer</span> =&gt;</span> officer.<span class="property">id</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(officerIds); <span class="comment">// [8, 12]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> prices = ;</span><br><span class="line"><span class="keyword">const</span> discountedPrices = prices.<span class="title function_">map</span>(<span class="function"><span class="params">price</span> =&gt;</span> price * <span class="number">0.9</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(discountedPrices); <span class="comment">// [26]</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="条件筛选生成新数组"><a href="#条件筛选生成新数组" class="headerlink" title="条件筛选生成新数组"></a><strong>条件筛选生成新数组</strong></h2></li>
+</ul>
+<p>**filter()**方法创建一个给定数组一部分的浅拷贝，其中包含通过所提供函数测试的所有元素 。它返回一个新数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">5</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">130</span>, <span class="number">44</span>];</span><br><span class="line"><span class="keyword">const</span> bigEnough = numbers.<span class="title function_">filter</span>(<span class="function"><span class="params">value</span> =&gt;</span> value &gt;= <span class="number">10</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(bigEnough); <span class="comment">// [12, 130, 44]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pilots = [</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">&quot;Wedge Antilles&quot;</span>, <span class="attr">faction</span>: <span class="string">&quot;Rebels&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">8</span>, <span class="attr">name</span>: <span class="string">&quot;Ciena Ree&quot;</span>, <span class="attr">faction</span>: <span class="string">&quot;Empire&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">40</span>, <span class="attr">name</span>: <span class="string">&quot;Iden Versio&quot;</span>, <span class="attr">faction</span>: <span class="string">&quot;Empire&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">id</span>: <span class="number">66</span>, <span class="attr">name</span>: <span class="string">&quot;Thane Kyrell&quot;</span>, <span class="attr">faction</span>: <span class="string">&quot;Rebels&quot;</span> &#125;</span><br><span class="line">];</span><br><span class="line"><span class="keyword">const</span> rebels = pilots.<span class="title function_">filter</span>(<span class="function"><span class="params">pilot</span> =&gt;</span> pilot.<span class="property">faction</span> === <span class="string">&quot;Rebels&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(rebels); <span class="comment">// [&#123; id: 2, name: &quot;Wedge Antilles&quot;, faction: &quot;Rebels&quot; &#125;, &#123; id: 66, name: &quot;Thane Kyrell&quot;, faction: &quot;Rebels&quot; &#125;]</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="用于计算操作"><a href="#用于计算操作" class="headerlink" title="用于计算操作"></a>用于计算操作</h2></li>
+</ul>
+<p><strong><code>reduce(callback,</code> currentValue</strong>**<code>)</code>**方法将数组中的所有元素缩减为单个值，返回的这个值可以是任何类型 。它对数组的每个元素执行一次</p>
+<p><code>callback</code>，并将回调结果（累加器）从一个元素传递到下一个元素 。</p>
+<p>currentValue 是可选的，如果提供，它将作为 <code>accumulator</code> 的初始值 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> sum = numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">accumulator, currentValue</span>) =&gt;</span> accumulator + currentValue, <span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(sum); <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="查找第一个-最后一个匹配元素"><a href="#查找第一个-最后一个匹配元素" class="headerlink" title="查找第一个&#x2F;最后一个匹配元素"></a>查找第一个&#x2F;最后一个匹配元素</h2></li>
+</ul>
+<p>**<code>find()</code>**方法返回数组中满足提供的测试函数的第一个元素的值 。如果未找到，则返回 <code>undefined</code>。</p>
+<p>**<code>findLast()</code>**则反向迭代数组，返回满足测试函数的最后一个元素的值 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> inventory = [</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">&quot;apples&quot;</span>, <span class="attr">quantity</span>: <span class="number">2</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">&quot;bananas&quot;</span>, <span class="attr">quantity</span>: <span class="number">0</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">name</span>: <span class="string">&quot;cherries&quot;</span>, <span class="attr">quantity</span>: <span class="number">5</span> &#125;,</span><br><span class="line">];</span><br><span class="line"><span class="keyword">const</span> cherries = inventory.<span class="title function_">find</span>(<span class="function"><span class="params">fruit</span> =&gt;</span> fruit.<span class="property">name</span> === <span class="string">&quot;cherries&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(cherries); <span class="comment">// &#123; name: &#x27;cherries&#x27;, quantity: 5 &#125;</span></span><br><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"><span class="keyword">const</span> lastEven = numbers.<span class="title function_">findLast</span>(<span class="function"><span class="params">num</span> =&gt;</span> num % <span class="number">2</span> === <span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(lastEven); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="查找匹配元素的索引"><a href="#查找匹配元素的索引" class="headerlink" title="查找匹配元素的索引"></a>查找匹配元素的索引</h2></li>
+</ul>
+<p>** <code>findIndex()</code>**方法返回数组中满足提供的测试函数的第一个元素的索引 。如果未找到，则返回 <code>-1</code>。</p>
+<p>**<code>findLastIndex()</code>**则返回最后一个匹配元素的索引 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">20</span>, <span class="number">40</span>];</span><br><span class="line"><span class="keyword">const</span> firstIndex = numbers.<span class="title function_">findIndex</span>(<span class="function"><span class="params">num</span> =&gt;</span> num === <span class="number">20</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(firstIndex); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> lastIndex = numbers.<span class="title function_">findLastIndex</span>(<span class="function"><span class="params">num</span> =&gt;</span> num === <span class="number">20</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(lastIndex); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+<ul>
+<li><h2 id="将数组元素连接成字符串"><a href="#将数组元素连接成字符串" class="headerlink" title="将数组元素连接成字符串"></a>将数组元素连接成字符串</h2></li>
+</ul>
+<p>**<code>join(separator)</code>**方法将数组中的所有元素连接成一个字符串并返回 。</p>
+<p><code>separator</code> 是可选的，用于指定分隔符，默认是逗号 (<code>,</code>) 。如果数组为空，则返回空字符串 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fruits =;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits.<span class="title function_">join</span>());    <span class="comment">// &quot;Apple,Banana,Orange&quot; [36]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits.<span class="title function_">join</span>(<span class="string">&quot; | &quot;</span>)); <span class="comment">// &quot;Apple | Banana | Orange&quot; [34]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fruits.<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>));   <span class="comment">// &quot;AppleBananaOrange&quot; [36]</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" title="点击并拖拽以移动"></p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/08/07/Web%E8%BA%AB%E4%BB%BD%E9%AA%8C%E8%AF%81%EF%BC%8CCookie%E3%80%81Session%E3%80%81Token%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E5%8C%BA%E5%88%AB%E5%9C%A8%E9%82%A3%EF%BC%9F/"
+      title="Web身份验证，Cookie、Session、Token是什么，区别在那？"
+     >
+
+    <p class="title-text">
+      
+        Web身份验证，Cookie、Session、Token是什么，区别在那？
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 霜月舞篝<br>
+    本站仅供个人学习使用 | 基于 <a href="https://hexo.io/" target="_blank">Hexo</a> 构建 
+    </br>联系方式：QQ:1632743573 | 微信：key_naka
+  </div>
+
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
